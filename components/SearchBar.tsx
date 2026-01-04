@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SearchIcon } from './icons/SearchIcon';
 import { StopIcon } from './icons/StopIcon';
 
 interface SearchBarProps {
+  value: string;
+  onChange: (value: string) => void;
   onSearch: (query: string) => void;
   isLoading: boolean;
   translations: { [key: string]: string };
   onCancel: () => void;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading, onCancel, translations }) => {
-  const [query, setQuery] = useState('');
-
+export const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, onSearch, isLoading, onCancel, translations }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim() && !isLoading) {
-      onSearch(query.trim());
+    if (value.trim() && !isLoading) {
+      onSearch(value);
     }
   };
 
@@ -24,8 +24,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading, onCan
       <div className="relative">
         <input
           type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
           placeholder={translations.searchPlaceholder}
           className="w-full p-4 pr-16 text-lg bg-slate-700 text-slate-100 border-2 border-slate-600 rounded-full focus:ring-amber-500 focus:border-amber-500 transition"
           disabled={isLoading}
@@ -43,7 +43,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading, onCan
           <button
             type="submit"
             className="absolute inset-y-0 right-0 flex items-center justify-center w-14 h-14 bg-amber-500 text-slate-900 rounded-full m-1 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-amber-500 disabled:bg-slate-500 disabled:cursor-not-allowed transition"
-            disabled={isLoading}
+            disabled={!value.trim() || isLoading}
             aria-label={translations.searchButton}
           >
             <SearchIcon className="h-6 w-6" />

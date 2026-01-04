@@ -1,4 +1,3 @@
-
 export type Language = 'en' | 'ko';
 
 export interface KeyTerm {
@@ -14,7 +13,7 @@ export interface OriginalLanguageDetail {
 }
 
 export interface VerseTranslation {
-  version: 'ESV' | 'NASB1995' | 'KRV' | 'RNKSV' | 'Original';
+  version: 'ESV' | 'KRV' | 'RNKSV' | 'NKRV' | 'Original';
   text: string;
   original_language_detail?: OriginalLanguageDetail;
 }

@@ -1,5 +1,5 @@
 {
   "name": "Bible Speak",
-  "description": "An AI-powered bible study tool for deep, contextual research into the Scriptures. Provides verse discovery, historical-literary context, and original language analysis in English (ESV, NASB 1995) and Korean (KRV, RNKSV).",
+  "description": "An AI-powered bible study tool for deep, contextual research into the Scriptures. Provides verse discovery, historical-literary context, and original language analysis focusing on ESV for English and KRV/RNKSV for Korean, guided by traditional Reformed and Puritanical hermeneutics.",
   "requestFramePermissions": []
 }
